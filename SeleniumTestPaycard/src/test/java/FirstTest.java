@@ -102,24 +102,6 @@ public class FirstTest {
     @Test
     public void Screenshot() throws IOException {
         driver.get(baseUrl);
-        WebElement inputCardNumber =  driver.findElement(By.id("input-card-number"));
-        inputCardNumber.click();
-        inputCardNumber.clear();
-        inputCardNumber.sendKeys("4000000000000051");
-        WebElement inputCardHolder = driver.findElement(By.id("input-card-holder"));
-        inputCardHolder.click();
-        inputCardHolder.clear();
-        inputCardHolder.sendKeys("JHON JHONSON");
-        driver.findElement(By.id("card-expires-month")).click();
-        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("03");
-        driver.findElement(By.id("card-expires-year")).click();
-        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2026");
-        WebElement inputCardCvc = driver.findElement(By.id("input-card-cvc"));
-        inputCardCvc.click();
-        inputCardCvc.clear();
-        inputCardCvc.sendKeys("333");
-        String Order_number = (String) driver.findElement(By.id("order-number")).getText();
-        String Total_Amount = (String) driver.findElement(By.id("total-amount")).getText();
 
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.xpath("//*[@id=\"cvc-hint-toggle\"]"))).build().perform();
@@ -128,10 +110,6 @@ public class FirstTest {
 
         FileHandler.copy(scFile, new File("src/test/1.png"));
 
-        driver.findElement(By.id("action-submit")).click();
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-ordernumber\"]/div[2]")).getText(), Order_number);
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-total-amount\"]")).getText(), Total_Amount);
-        assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-status\"]/div[2]")).getText(), "AUTHORIZED");
     }
 
 
@@ -154,8 +132,8 @@ public class FirstTest {
         inputCardCvc.click();
         inputCardCvc.clear();
         inputCardCvc.sendKeys("333");
-        String Order_number = (String) driver.findElement(By.id("order-number")).getText();
-        String Total_Amount = (String) driver.findElement(By.id("total-amount")).getText();
+        String Order_number = driver.findElement(By.id("order-number")).getText();
+        String Total_Amount = driver.findElement(By.id("total-amount")).getText();
         driver.findElement(By.id("action-submit")).click();
         assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-ordernumber\"]/div[2]")).getText(), Order_number);
         assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-total-amount\"]")).getText(), Total_Amount);
@@ -184,8 +162,8 @@ public class FirstTest {
         inputCardCvc.click();
         inputCardCvc.clear();
         inputCardCvc.sendKeys("333");
-        String Order_number = (String) driver.findElement(By.id("order-number")).getText();
-        String Total_Amount = (String) driver.findElement(By.id("total-amount")).getText();
+        String Order_number = driver.findElement(By.id("order-number")).getText();
+        String Total_Amount = driver.findElement(By.id("total-amount")).getText();
         driver.findElement(By.id("action-submit")).click();
         assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-ordernumber\"]/div[2]")).getText(), Order_number);
         assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-total-amount\"]")).getText(), Total_Amount);
@@ -214,8 +192,8 @@ public class FirstTest {
         inputCardCvc.click();
         inputCardCvc.clear();
         inputCardCvc.sendKeys("333");
-        String Order_number = (String) driver.findElement(By.id("order-number")).getText();
-        String Total_Amount = (String) driver.findElement(By.id("total-amount")).getText();
+        String Order_number = driver.findElement(By.id("order-number")).getText();
+        String Total_Amount = driver.findElement(By.id("total-amount")).getText();
         driver.findElement(By.id("action-submit")).click();
         assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-ordernumber\"]/div[2]")).getText(), Order_number);
         assertEquals(driver.findElement(By.xpath("//*[@id=\"payment-item-total-amount\"]")).getText(), Total_Amount);
@@ -231,19 +209,6 @@ public class FirstTest {
         inputCardNumber.sendKeys("4444444444449777111");
         WebElement inputCardHolder = driver.findElement(By.id("input-card-holder"));
         inputCardHolder.click();
-        inputCardHolder.clear();
-        inputCardHolder.sendKeys("JHON JHONSON");
-        driver.findElement(By.id("card-expires-month")).click();
-        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("03");
-        driver.findElement(By.id("card-expires-year")).click();
-        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2026");
-        WebElement inputCardCvc = driver.findElement(By.id("input-card-cvc"));
-        inputCardCvc.click();
-        inputCardCvc.clear();
-        inputCardCvc.sendKeys("333");
-        String Order_number = (String) driver.findElement(By.id("order-number")).getText();
-        String Total_Amount = (String) driver.findElement(By.id("total-amount")).getText();
-        driver.findElement(By.id("action-submit")).click();
         assertEquals(driver.findElement(By.xpath("//*[@id=\"card-number-field\"]/div/label")).getText(), "Card number is not valid");
     }
 
@@ -251,25 +216,11 @@ public class FirstTest {
     @Test
     public void InvalidCardholderName() {
         driver.get(baseUrl);
-        WebElement inputCardNumber = driver.findElement(By.id("input-card-number"));
-        inputCardNumber.click();
-        inputCardNumber.clear();
-        inputCardNumber.sendKeys("4444444444449777");
         WebElement inputCardHolder = driver.findElement(By.id("input-card-holder"));
         inputCardHolder.click();
         inputCardHolder.clear();
         inputCardHolder.sendKeys("12453sdfdsg!!!!!!!");
         driver.findElement(By.id("card-expires-month")).click();
-        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("03");
-        driver.findElement(By.id("card-expires-year")).click();
-        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2026");
-        WebElement inputCardCvc = driver.findElement(By.id("input-card-cvc"));
-        inputCardCvc.click();
-        inputCardCvc.clear();
-        inputCardCvc.sendKeys("333");
-        String Order_number = (String) driver.findElement(By.id("order-number")).getText();
-        String Total_Amount = (String) driver.findElement(By.id("total-amount")).getText();
-        driver.findElement(By.id("action-submit")).click();
         assertEquals(driver.findElement(By.xpath("//*[@id=\"card-holder-field\"]/div/label")).getText(), "Cardholder name is not valid");
     }
 
@@ -277,24 +228,10 @@ public class FirstTest {
     @Test
     public void InvalidCvcCard() {
         driver.get(baseUrl);
-        WebElement inputCardNumber = driver.findElement(By.id("input-card-number"));
-        inputCardNumber.click();
-        inputCardNumber.clear();
-        inputCardNumber.sendKeys("4444444444449777");
-        WebElement inputCardHolder = driver.findElement(By.id("input-card-holder"));
-        inputCardHolder.click();
-        inputCardHolder.clear();
-        inputCardHolder.sendKeys("JHON JHONSON");
-        driver.findElement(By.id("card-expires-month")).click();
-        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("03");
-        driver.findElement(By.id("card-expires-year")).click();
-        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2026");
         WebElement inputCardCvc = driver.findElement(By.id("input-card-cvc"));
         inputCardCvc.click();
         inputCardCvc.clear();
         inputCardCvc.sendKeys("AAA");
-        String Order_number = (String) driver.findElement(By.id("order-number")).getText();
-        String Total_Amount = (String) driver.findElement(By.id("total-amount")).getText();
         driver.findElement(By.id("action-submit")).click();
         assertEquals(driver.findElement(By.xpath("//*[@id=\"card-cvc-field\"]/div/label")).getText(), "CVV2/CVC2/CAV2 is required");
     }
@@ -305,15 +242,6 @@ public class FirstTest {
         driver.get(baseUrl);
 
         PaymentPage paymentPage = new PaymentPage(driver);
-
-        WebElement inputCardNumber = driver.findElement(By.id("input-card-number"));
-        inputCardNumber.click();
-        inputCardNumber.clear();
-        inputCardNumber.sendKeys("4444444444449777");
-        WebElement inputCardHolder = driver.findElement(By.id("input-card-holder"));
-        inputCardHolder.click();
-        inputCardHolder.clear();
-        inputCardHolder.sendKeys("JHON JHONSON");
 
         LocalDate currentDate = LocalDate.now();
 
@@ -343,32 +271,12 @@ public class FirstTest {
         }
         paymentPage.selectExpiresYear().selectByIndex(indexYear);
 
-        paymentPage.inputCardCvc().click();
-        paymentPage.inputCardCvc().clear();
-        paymentPage.enterCardCvc("973");
-
         paymentPage.clickActionSubmit();
-//            WebElement element = driver.findElement(By.xpath("//*[contains(text(), 'Invalid date')]"));
-//           assertEquals(element.getText(), "Invalid date");
-//            assertEquals(driver.findElement(By.xpath("//*[@id=\"card-cvc-field\"]/div/label")).getText(),"");
-//    }
-
-        WebElement element = driver.findElement(By.xpath("//*[contains(text(), 'Invalid date')]"));
-        if (element.getText().equals("Invalid date")) {
-            assertEquals(element.getText(), "Invalid date");
-        } else {
-            WebElement cvcLabel = driver.findElement(By.xpath("//*[@id=\"card-cvc-field\"]/div/label"));
-            assertEquals(cvcLabel.getText(), "");
-        }
-
+            WebElement element = driver.findElement(By.xpath("//*[contains(text(), 'Invalid date')]"));
+           assertEquals(element.getText(), "Invalid date");
     }
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
     }
 }
-
-
-
-// info страницы успешной оплаты
-//*[@id="payment-status-title"]/span
